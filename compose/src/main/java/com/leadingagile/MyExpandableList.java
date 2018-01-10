@@ -1,5 +1,12 @@
 package com.leadingagile;
 
+/*
+ * Based on example in "Refactoring to Patterns"
+ * by Joshua Kerievsky
+ * 
+ * See https://www.industriallogic.com/xp/refactoring/composeMethod.html
+ */
+
 public class MyExpandableList {
 
 	private Object[] elements = new Object[10];
