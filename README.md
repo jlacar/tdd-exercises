@@ -1,9 +1,12 @@
 # Test-Driven Development Exercises
 A collection of exercises for practicing TDD and refactoring
 
-## Exercise 1
+## Exercise 1 - Compose
 
-### Scenario
+The code used in this exercise is based on the Composed Method refactoring example 
+from Joshua Kerievsky's book, "Refactoring to Patterns"
+
+### Setup
 
 You are trying to coach a developer who has a working knowledge of JUnit but very little 
 experience with TDD and refactoring. The developer is willing to learn about TDD but is 
@@ -28,4 +31,24 @@ Some things you might want to discuss/demonstrate:
 * Code smells
 * Reasons for refactoring
 * The role of unit tests in refactoring and TDD
- 
+
+
+## Exercise 2 - TDD_CODE_LAB
+
+The code used in this exercise is taken directly from Jason Gorman's experiment on
+TDD as described here: http://www.codemanship.co.uk/parlezuml/blog/?postid=1019
+
+### Setup
+
+See Jason's blog post for details on how to go through this exercise.
+
+
+## Exercise 3 - Video Library
+
+The code used in this exercise is from Jay Fields first example in his book
+"Working Effectively with Unit Tests" (WEWUT)
+
+### Setup
+
+You have some code with a couple of broken tests. You need to find the bug and fix it,
+doing some refactoring and TDD along the way.
