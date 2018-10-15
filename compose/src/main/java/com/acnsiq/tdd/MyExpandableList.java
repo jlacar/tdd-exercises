@@ -1,4 +1,4 @@
-package com.leadingagile;
+package com.acnsiq.tdd;
 
 /*
  * Based on example in "Refactoring to Patterns"
@@ -18,18 +18,20 @@ public class MyExpandableList {
 	}
 	
 	public void add(Object element) {
-		if (!readOnly) {
-			int newSize = elements.length + 1;
-			if (newSize > elements.length) {
-				Object[] newElements = new Object[elements.length + 10];
-				for (int i = 0; i < size; i++) {
-					newElements[i] = elements[i];
-				}
-				elements = newElements;
+		if  (readOnly) {
+			return;
+		} 
+		
+		int newSize = elements.length + 1;
+		if (elements.length + 1 > elements.length) {
+			Object[] newElements = new Object[elements.length + 10];
+			for (int i = 0; i < size; i++) {
+				newElements[i] = elements[i];
 			}
-			elements[size] = element;
-			size++;
+			elements = newElements;
 		}
+		elements[size] = element;
+		size++;
 	}
 	
 	public void setReadOnly(boolean readOnly) {
