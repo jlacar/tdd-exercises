@@ -10,13 +10,13 @@ package com.acnsiq.tdd;
 public class MyList {
 
 	private Object[] elements = new Object[10];
-	private boolean readOnly = false;
+	private boolean readOnly;
 	private int size;
 
 	public void add(Object element) {
 		if (!readOnly) {
 			int newSize = size + 1;
-			if (elements.length == newSize) {
+			if (elements.length < newSize) {
 				Object[] newElements = new Object[elements.length + 10];
 				for (int i = 0; i < size; i++) {
 					newElements[i] = elements[i];
@@ -28,4 +28,11 @@ public class MyList {
 		}
 	}
 
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
+
+	public boolean isReadOnly() {
+		return readOnly;
+	}
 }
