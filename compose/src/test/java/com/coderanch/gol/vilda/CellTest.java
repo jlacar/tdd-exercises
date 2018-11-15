@@ -1,37 +1,41 @@
 package com.coderanch.gol.vilda;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static com.coderanch.gol.vilda.Cell.ALIVE;
+import static com.coderanch.gol.vilda.Cell.DEAD;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.jupiter.api.Test;
 
 class CellTest {
 
 	@Test
-    public void alive_cell_with_less_than_two_living_neighbors_dies_in_next_generation() {
-        assertEquals(Cell.DEAD, Cell.inNextGeneration(Cell.ALIVE, 1));
-    }
-
+	void it_survives_with_2_neighbors() throws Exception {
+		assertThat(ALIVE.next(2), is(ALIVE));
+	}
+	
+	@Test
+	void it_survives_with_3_neighbors() throws Exception {
+		assertThat(ALIVE.next(3), is(ALIVE));
+	}
+	
     @Test
-    public void alive_cell_with_two_or_tree_living_neighbors_lives_on_in_next_generation() {
-        assertEquals(Cell.ALIVE, Cell.inNextGeneration(Cell.ALIVE, 2));
-        assertEquals(Cell.ALIVE, Cell.inNextGeneration(Cell.ALIVE, 3));
-    }
-
+	void it_dies_of_loneliness() throws Exception {
+    	assertThat(ALIVE.next(0), is(DEAD));
+		assertThat(ALIVE.next(1), is(DEAD));
+	}
+    
     @Test
-    public void alive_cell_with_more_than_three_living_neighbors_dies_in_next_generation() {
-        assertEquals(Cell.DEAD, Cell.inNextGeneration(Cell.ALIVE, 4));
-    }
-
+	void it_dies_of_overcrowding() throws Exception {
+    	assertThat(ALIVE.next(4), is(DEAD));
+    	assertThat(ALIVE.next(5), is(DEAD));
+    	assertThat(ALIVE.next(6), is(DEAD));
+    	assertThat(ALIVE.next(7), is(DEAD));
+    	assertThat(ALIVE.next(8), is(DEAD));
+	}
+    
     @Test
-    public void dead_cell_with_three_living_neighbors_comes_to_life_in_next_generation() {
-        assertEquals(Cell.ALIVE, Cell.inNextGeneration(Cell.DEAD, 3));
-    }
-
-    @Test
-    public void exception_is_thrown_if_cell_instance_is_not_passed() {
-    	assertThrows(NullPointerException.class, () -> {
-    		Cell.inNextGeneration(null, 0);
-    	});
-    }
-
+	void it_is_born_when_dead_and_exactly_3_neighbors() throws Exception {
+    	assertThat(DEAD.next(3), is(ALIVE));
+	}
 }
