@@ -8,11 +8,10 @@ package com.acnsiq.tdd;
  */
 
 public class MyList {
-
 	private Object[] elements = new Object[10];
-	private boolean readOnly;
 	private int size;
-
+	private boolean readOnly;
+	
 	public void add(Object element) {
 		if (!readOnly) {
 			int newSize = size + 1;
@@ -34,5 +33,13 @@ public class MyList {
 
 	public boolean isReadOnly() {
 		return readOnly;
+	}
+
+	int getSize() {
+		return size;
+	}
+
+	int getCapacity() {
+		return elements.length;
 	}
 }
