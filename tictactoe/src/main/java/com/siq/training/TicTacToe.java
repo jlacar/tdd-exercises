@@ -13,12 +13,32 @@ public class TicTacToe {
     private char whosMoving = 'X';
 
     public boolean isFinished() {
+        return hasWinner() || isDraw();
+    }
+
+    private boolean isDraw() {
         return toString().indexOf(' ') == -1;
     }
 
+    private boolean hasWinner() {
+        return wonRow1() || wonRow2();
+    }
+
+    private boolean wonRow1() {
+        return toString().startsWith("XXX");
+    }
+
+    private boolean wonRow2() {
+        return toString().contains("XXX");
+    }
+
     public void move(int position) {
-        spaces[position - 1] = whosMoving;
+        mark(position);
         switchPlayer();
+    }
+
+    private void mark(int position) {
+        spaces[position - 1] = whosMoving;
     }
 
     private void switchPlayer() {

@@ -34,8 +34,7 @@ public class TicTacToeTest {
 	}
 	
 	@Test
-	@Ignore
-	public void when_the_top_row_is_all_Xs_then_X_wins() throws Exception {
+	public void when_X_wins_then_game_is_finished() throws Exception {
 		game.move(1);
 		game.move(4);
 		game.move(2);
@@ -44,6 +43,29 @@ public class TicTacToeTest {
 		
 		assertThat(game.isFinished(), is(true));
 	}
+
+	@Test
+	public void when_any_player_wins_a_row_then_game_is_finished() throws Exception {
+		game.move(4);
+		game.move(1);
+		game.move(5);
+		game.move(2);
+		game.move(6);
+
+		assertThat(game.isFinished(), is(true));
+
+	}
+
+	/*
+	DRY = Don't Repeat Yourself
+
+	There should only be one representation of any piece of knowledge
+	in your system.
+
+	Pragmatic Programmer - From Journeyman To Master
+	By Dave Thomas and Andrew Hunt
+	 */
+
 
 	@Test
 	public void game_is_over_when_all_locations_are_taken() {
@@ -81,4 +103,6 @@ public class TicTacToeTest {
 
 		assertThat(game.isFinished(), is(false));
 	}
+
+
 }
