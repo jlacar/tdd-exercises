@@ -32,6 +32,18 @@ public class TicTacToeTest {
 	public void when_game_starts_then_the_game_is_not_finished() {
 		assertThat(game.isFinished(), is(false));
 	}
+	
+	@Test
+	@Ignore
+	public void when_the_top_row_is_all_Xs_then_X_wins() throws Exception {
+		game.move(1);
+		game.move(4);
+		game.move(2);
+		game.move(5);
+		game.move(3);
+		
+		assertThat(game.isFinished(), is(true));
+	}
 
 	@Test
 	public void game_is_over_when_all_locations_are_taken() {
@@ -64,7 +76,6 @@ public class TicTacToeTest {
 	}
 
 	@Test
-	@Ignore
 	public void game_should_not_be_finished_after_first_move() {
 		game.move(2);
 

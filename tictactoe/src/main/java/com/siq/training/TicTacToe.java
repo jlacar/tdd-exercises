@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class TicTacToe {
 
-    private boolean isFinished = false;
-
     private char[] spaces = new char[9];
 
     {
@@ -15,13 +13,12 @@ public class TicTacToe {
     private char whosMoving = 'X';
 
     public boolean isFinished() {
-        return isFinished;
+        return toString().indexOf(' ') == -1;
     }
 
     public void move(int position) {
         spaces[position - 1] = whosMoving;
         switchPlayer();
-        isFinished = true;
     }
 
     private void switchPlayer() {
