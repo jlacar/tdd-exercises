@@ -1,19 +1,35 @@
 package com.siq.training;
 
+import java.util.Arrays;
+
 public class TicTacToe {
 
-	private boolean isFinished = false;
-	
-	public boolean isFinished() {
-		return isFinished;
-	}
+    private boolean isFinished = false;
 
-	public void move(int position) {
-		isFinished = true;
-	}
+    private char[] spaces = new char[9];
 
-	@Override
-	public String toString() {
-		return " X"; 
-	}
+    {
+        Arrays.fill(spaces, ' ');
+    }
+
+    private char whosMoving = 'X';
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void move(int position) {
+        spaces[position - 1] = whosMoving;
+        switchPlayer();
+        isFinished = true;
+    }
+
+    private void switchPlayer() {
+        whosMoving = (whosMoving == 'X') ? 'O' : 'X';
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(spaces);
+    }
 }

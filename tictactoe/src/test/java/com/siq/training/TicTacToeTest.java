@@ -6,6 +6,7 @@ import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TicTacToeTest {
@@ -34,7 +35,6 @@ public class TicTacToeTest {
 
 	@Test
 	public void game_is_over_when_all_locations_are_taken() {
-		TicTacToe game = new TicTacToe();
 		game.move(2);
 		game.move(1);
 		game.move(4);
@@ -50,7 +50,6 @@ public class TicTacToeTest {
 	
 	@Test
 	public void first_player_to_move_should_be_X() throws Exception {
-		TicTacToe game  = new TicTacToe();
 		game.move(2);
 		
 		assertTrue(game.toString().startsWith(" X"));
@@ -62,5 +61,13 @@ public class TicTacToeTest {
 		game.move(1);
 		
 		assertTrue(game.toString().startsWith("OX"));
+	}
+
+	@Test
+	@Ignore
+	public void game_should_not_be_finished_after_first_move() {
+		game.move(2);
+
+		assertThat(game.isFinished(), is(false));
 	}
 }
