@@ -1,5 +1,13 @@
 package com.siq.training;
 
+/*
+   TDD Example
+
+   See the associated class file for a description of the
+   problem we're trying to solve.
+
+ */
+
 import org.junit.Before;
 import org.junit.Test;
 

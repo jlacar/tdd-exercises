@@ -1,6 +1,8 @@
 package com.siq.training;
 
 /*
+    TDD Example
+
     Problem: How many cartons are needed to package N candy bars?
 
     Given:
