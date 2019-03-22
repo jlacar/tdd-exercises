@@ -9,6 +9,7 @@ package com.siq.training;
  */
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -24,8 +25,12 @@ public class CartonCalculatorTest {
     }
 
     @Test
+    @Ignore
     public void given_N_is_the_number_of_candy_bars_to_box_up() {
-        // Included to give context and make the JUnit output read better.
+        // This test is marked as "Ignored" on purpose. It is included
+        // just to give some context about N referred to in the real tests
+        // and to make the JUnit output read better.
+        //
         // Ideally, we'd be using JUnit 5 and nested test classes
     }
 
