@@ -26,10 +26,10 @@ public class CartonCalculatorTest {
 
     @Test
     @Ignore
-    public void given_N_is_the_number_of_candy_bars_to_box_up() {
-        // This test is marked as "Ignored" on purpose. It is included
-        // just to give some context about N referred to in the real tests
-        // and to make the JUnit output read better.
+    public void given_N_is_the_number_of_candy_bars_to_package() {
+        // This test is "Ignored" on purpose. It is just here to
+        // explain what "N" is in the real tests and to make the
+        // JUnit output read better.
         //
         // Ideally, we'd be using JUnit 5 and nested test classes
     }
@@ -37,12 +37,16 @@ public class CartonCalculatorTest {
     @Test
     public void when_N_is_a_multiple_of_24_then_we_should_get_N_over_24_cartons() throws Exception {
         assertThat(calc.cartonsFor(24), is(1));
+        assertThat(calc.cartonsFor(48), is(2));
+        assertThat(calc.cartonsFor(70), is(3));
     }
 
     @Test
     public void when_N_is_not_a_multiple_of_24_then_we_should_get_an_extra_carton_for_the_leftovers() throws Exception {
         assertThat(calc.cartonsFor(23), is(1));
         assertThat(calc.cartonsFor(25), is(2));
+        assertThat(calc.cartonsFor(69), is(3));
+        assertThat(calc.cartonsFor(71), is(3));
     }
 
     @Test
