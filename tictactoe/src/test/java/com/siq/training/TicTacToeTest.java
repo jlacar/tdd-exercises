@@ -22,87 +22,67 @@ public class TicTacToeTest {
 	//    switch players
 	// end loop
 	// show result: win (X or O) or draw
-	
+
+    private static final int[] X_wins_in_first_row = {1, 4, 2, 5, 3};
+    private static final int[] X_wins_in_second_row = {4, 1, 5, 2, 6};
+    private static final int[] cats_game = {2, 1, 4, 3, 5, 6, 7, 8, 9};
+
+    private void play(int... moves) {
+        for (int position : moves) {
+            game.move(position);
+        }
+    }
+
 	@Before
 	public void setup() {
 		game = new TicTacToe();
 	}
-	
+
 	@Test
 	public void when_game_starts_then_the_game_is_not_finished() {
 		assertThat(game.isFinished(), is(false));
 	}
-	
+
 	@Test
 	public void when_X_wins_then_game_is_finished() throws Exception {
-		game.move(1);
-		game.move(4);
-		game.move(2);
-		game.move(5);
-		game.move(3);
-		
+	    play(X_wins_in_first_row);
+
 		assertThat(game.isFinished(), is(true));
 	}
 
-	@Test
+    @Test
 	public void when_any_player_wins_a_row_then_game_is_finished() throws Exception {
-		game.move(4);
-		game.move(1);
-		game.move(5);
-		game.move(2);
-		game.move(6);
+        play(X_wins_in_second_row);
 
 		assertThat(game.isFinished(), is(true));
-
 	}
-
-	/*
-	DRY = Don't Repeat Yourself
-
-	There should only be one representation of any piece of knowledge
-	in your system.
-
-	Pragmatic Programmer - From Journeyman To Master
-	By Dave Thomas and Andrew Hunt
-	 */
-
 
 	@Test
 	public void game_is_over_when_all_locations_are_taken() {
-		game.move(2);
-		game.move(1);
-		game.move(4);
-		game.move(3);
-		game.move(5);
-		game.move(6);
-		game.move(7);
-		game.move(8);
-		game.move(9);
-		
-		assertThat(game.isFinished(), is(true));
+        play(cats_game);
+
+        assertThat(game.isFinished(), is(true));
 	}
-	
-	@Test
+
+    @Test
 	public void first_player_to_move_should_be_X() throws Exception {
-		game.move(2);
+		play(2);
 		
 		assertTrue(game.toString().startsWith(" X"));
 	}
 	
 	@Test
 	public void second_player_to_move_should_be_O() throws Exception {
-		game.move(2);
-		game.move(1);
-		
+        play(2, 1);
+
 		assertTrue(game.toString().startsWith("OX"));
 	}
 
 	@Test
 	public void game_should_not_be_finished_after_first_move() {
-		game.move(2);
+		play(2);
 
 		assertThat(game.isFinished(), is(false));
 	}
-
 
 }
