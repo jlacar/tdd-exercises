@@ -67,7 +67,7 @@ public class CartonCalculatorTest {
     }
 
     @Test
-    public void when_N_is_a_multiple_of_BARS_PER_CARTON_then_N_over_BATCH_SIZE_cartons_should_be_needed() throws Exception {
+    public void when_N_is_a_multiple_of_BARS_PER_CARTON_then_N_over_BARS_PER_CARTON_cartons_should_be_needed() throws Exception {
         assertThat(calc.cartonsFor(1 * BARS_PER_CARTON), is(1));
         assertThat(calc.cartonsFor(2 * BARS_PER_CARTON), is(2));
         assertThat(calc.cartonsFor(3 * BARS_PER_CARTON), is(3));
