@@ -67,20 +67,20 @@ public class CartonCalculatorTest {
     }
 
     @Test
-    public void when_N_is_a_multiple_of_BARS_PER_CARTON_then_N_over_BARS_PER_CARTON_cartons_should_be_needed() throws Exception {
+    public void number_of_cartons_needed_should_be_at_least_N_over_BARS_PER_CARTON() throws Exception {
         assertThat(calc.cartonsFor(1 * BARS_PER_CARTON), is(1));
         assertThat(calc.cartonsFor(2 * BARS_PER_CARTON), is(2));
         assertThat(calc.cartonsFor(3 * BARS_PER_CARTON), is(3));
     }
 
     @Test
-    public void when_N_is_not_a_multiple_of_BARS_PER_CARTON_then_any_leftovers_should_need_another_carton() throws Exception {
+    public void any_leftovers_should_need_another_carton() throws Exception {
         assertThat(calc.cartonsFor(BARS_PER_CARTON - 1), is(1));
         assertThat(calc.cartonsFor(BARS_PER_CARTON + 1), is(2));
     }
 
     @Test
-    public void when_N_is_0_then_0_cartons_should_be_needed() {
+    public void zero_cartons_should_be_needed_when_N_is_0() {
         assertThat(calc.cartonsFor(0), is(0));
     }
 }
