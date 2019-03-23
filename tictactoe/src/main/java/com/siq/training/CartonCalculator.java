@@ -16,7 +16,7 @@ package com.siq.training;
 
 public class CartonCalculator {
 
-    private static final int BARS_PER_CARTON = 24;
+    public static final int BARS_PER_CARTON = 24;
 
     public int cartonsFor(int candyBars) {
         return fullCartonsOf(candyBars) + cartonForAnyLeftover(candyBars);
