@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class ShoppingBasketTest {
-    @Test void blah() {
-        assertTrue(false);
+    @Test void new_basket_is_empty() {
+        assertTrue(new ShoppingBasket().isEmpty());
     }
 }
